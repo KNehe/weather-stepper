@@ -1,5 +1,6 @@
 import React from 'react';
 import { useWeather } from '../utils/useWeather';
+import ErrorMessage from './errorMessage'
 
 const WeatherForecast = () => {
     const { weatherData, error } = useWeather('current.json');

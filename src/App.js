@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Stepper from './components/stepper';
-import TodayWeather from './components/today-weather'
-import TomorrowForecast from './components/tomorrow-weather'
+import TodayWeather from './components/todayWeather'
+import TomorrowForecast from './components/todayWeather'
 
 function App() {
   const steps = [
