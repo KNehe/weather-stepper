@@ -1,6 +1,7 @@
 import React from 'react';
 import { useWeather } from '../utils/useWeather';
 import ErrorMessage from './errorMessage'
+import Loader from './loader'
 
 const WeatherForecast = () => {
     const { weatherData, error } = useWeather('current.json');
@@ -10,7 +11,7 @@ const WeatherForecast = () => {
     }    
 
     if (!weatherData) {
-        return <div>Fetching today's weather data...</div>;
+        return <Loader message="Fetching today's weather data..."/>;
     }
 
     return (
