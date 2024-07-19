@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Stepper from './components/stepper';
+import TodayWeather from './components/today-weather'
+import TomorrowForecast from './components/tomorrow-weather'
 
 function App() {
+  const steps = [
+    {
+      component: <TodayWeather/>
+    },
+    {
+      component: <TomorrowForecast/>
+    },
+    {
+      component: <div>Finale component</div>
+    }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main'>
+      <Stepper steps={steps}/>
     </div>
   );
 }
