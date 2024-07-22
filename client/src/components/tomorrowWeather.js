@@ -1,7 +1,7 @@
 import React from 'react';
-import { useWeather } from '../utils/useWeather';
+import { useWeather } from '../utils/useWeather.js';
 import ErrorMessage from './errorMessage.js';
-import Loader from './loader'
+import Loader from './loader.js'
 
 const TomorrowForecast = () => {
   const { weatherData, error } = useWeather('forecast');
