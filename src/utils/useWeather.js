@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { getLocation, fetchWeatherData } from './weatherAPI';
+import { getLocation, fetchWeatherData, fetchForecastData } from './weatherAPI';
 
-export const useWeather = (endpoint, additionalParams = '') => {
+
+export const useWeather = (endpointTag) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -9,15 +10,20 @@ export const useWeather = (endpoint, additionalParams = '') => {
     const fetchData = async () => {
       try {
         const location = await getLocation();
-        const data = await fetchWeatherData(location.lat, location.long, endpoint, additionalParams);
-        setWeatherData(data);
+        let result;
+        if (endpointTag === 'weather') {
+          result = await fetchWeatherData(location.lat, location.long);
+        } else if (endpointTag === 'forecast') {
+          result = await fetchForecastData(location.lat, location.long);
+        }
+        setWeatherData(result);
       } catch (err) {
         setError(err.message);
       }
     };
 
     fetchData();
-  }, [endpoint, additionalParams]);
+  }, [endpointTag]);
 
   return { weatherData, error };
 };

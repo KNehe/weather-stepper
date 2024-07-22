@@ -4,7 +4,7 @@ import ErrorMessage from './errorMessage'
 import Loader from './loader'
 
 const WeatherForecast = () => {
-    const { weatherData, error } = useWeather('current.json');
+    const { weatherData, error } = useWeather('weather');
 
     if (error) {
         return <ErrorMessage message={error}/>;

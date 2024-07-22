@@ -4,7 +4,7 @@ import ErrorMessage from './errorMessage.js';
 import Loader from './loader'
 
 const TomorrowForecast = () => {
-  const { weatherData, error } = useWeather('forecast.json', '&days=2');
+  const { weatherData, error } = useWeather('forecast');
 
   if (error) {
     return <ErrorMessage message={error}/>;
