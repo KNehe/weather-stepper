@@ -23,13 +23,13 @@ def fetch_current_weather(lat, long):
     except RequestException as e:
         raise Exception(f"Error fetching weather data: {str(e)}")
 
-def fetch_forecast(lat, long):
+def fetch_forecast(lat, long, days):
     cache_key = f'forecast_{lat}_{long}'
     cached_data = cache.get(cache_key)
     if cached_data:
         return cached_data
     try:
-        url = f"{BASE_URL}/forecast.json?key={settings.WEATHER_API_KEY}&q={lat},{long}&days=2"
+        url = f"{BASE_URL}/forecast.json?key={settings.WEATHER_API_KEY}&q={lat},{long}&days={days}"
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()

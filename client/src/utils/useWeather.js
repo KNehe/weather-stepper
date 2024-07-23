@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getLocation, fetchWeatherData, fetchForecastData } from './weatherAPI';
 
 
-export const useWeather = (endpointTag) => {
+export const useWeather = (endpointTag, days=2) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -14,7 +14,7 @@ export const useWeather = (endpointTag) => {
         if (endpointTag === 'weather') {
           result = await fetchWeatherData(location.lat, location.long);
         } else if (endpointTag === 'forecast') {
-          result = await fetchForecastData(location.lat, location.long);
+          result = await fetchForecastData(location.lat, location.long, days);
         }
         setWeatherData(result);
       } catch (err) {
@@ -23,7 +23,7 @@ export const useWeather = (endpointTag) => {
     };
 
     fetchData();
-  }, [endpointTag]);
+  }, [endpointTag, days]);
 
   return { weatherData, error };
 };

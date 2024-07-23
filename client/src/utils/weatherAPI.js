@@ -9,8 +9,8 @@ export const fetchWeatherData = async (lat, long) => {
   return response.json();
 };
 
-export const fetchForecastData = async (lat, long) => {
-  const response = await fetch(`${API_BASE_URL}/forecast/?lat=${lat}&long=${long}`);
+export const fetchForecastData = async (lat, long, days) => {
+  const response = await fetch(`${API_BASE_URL}/forecast/?lat=${lat}&long=${long}&days=${days}`);
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.error || 'An error occurred while fetching forecast data');
